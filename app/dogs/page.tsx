@@ -29,7 +29,16 @@ export default async function AllDogs() {
             <div key={dog.id} style={{ backgroundColor: 'white', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 4px 6px rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column' }}>
               
               <div style={{ position: 'relative', width: '100%', height: '300px', backgroundColor: '#edf2f7' }}>
-                {dog.image_url && <Image src={dog.image_url} alt={dog.name} fill style={{ objectFit: 'cover' }} />}
+                {dog.image_url && (
+  <Image 
+    src={dog.image_url.split(',')[0].trim()} 
+    alt={dog.name} 
+    fill 
+    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
+    quality={100} 
+    style={{ objectFit: 'cover' }} 
+  />
+)}
               </div>
 
               <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>

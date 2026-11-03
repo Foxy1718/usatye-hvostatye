@@ -11,8 +11,10 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.118.0",
     "next": "16.4.4",
+    "petrovich": "^0.2.1",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "yet-another-react-lightbox": "^3.33.0"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",

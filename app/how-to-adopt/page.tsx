@@ -12,9 +12,9 @@ export default function HowToAdopt() {
           
           <ol style={{ paddingLeft: '20px', marginBottom: '32px', fontWeight: '500', color: '#6b46c1' }}>
             <li style={{ marginBottom: '12px' }}>Выберите собаку на нашем сайте.</li>
-            <li style={{ marginBottom: '12px' }}>Свяжитесь с нами.</li>
-            <li style={{ marginBottom: '12px' }}>Мы организуем встречу с собакой.</li>
-            <li>Если вы подружитесь — подпишем договор и поможем с перевозкой.</li>
+            <li style={{ marginBottom: '12px' }}>Свяжитесь c нами.</li>
+            <li style={{ marginBottom: '12px' }}>Мы организуем встречу c собакой.</li>
+            <li>Если вы подружитесь — подпишем договор и поможем c перевозкой.</li>
           </ol>
 
           <div style={{ backgroundColor: '#f3e8ff', padding: '20px', borderRadius: '16px', marginBottom: '32px', border: '1px solid #e9d8fd' }}>
