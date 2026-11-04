@@ -6,6 +6,18 @@ import { notFound } from "next/navigation";
 
 export const dynamic = 'force-dynamic';
 
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  const { data: dog } = await supabase.from('dogs').select('name, sex, age, description').eq('id', resolvedParams.id).single();
+  
+  if (!dog) return { title: "Собака не найдена" };
+
+  return {
+    title: `${dog.name} — ${dog.sex}, ${dog.age} | Взять из приюта «Печатники»`,
+    description: `Собака ${dog.name} ищет дом. ${dog.description?.slice(0, 150)}...`,
+  };
+}
+
 export default async function DogPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = await params;
   const { data: dog, error } = await supabase.from('dogs').select('*').eq('id', resolvedParams.id).single();
