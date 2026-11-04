@@ -1,1 +1,12 @@
 @import "tailwindcss";
+/* Адаптивность для карточки собаки на телефонах */
+@media (max-width: 768px) {
+  .dog-card {
+    flex-direction: column !important;
+  }
+  .dog-card > div {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 15px !important;
+  }
+}

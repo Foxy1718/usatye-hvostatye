@@ -35,7 +35,7 @@ export default async function DogPage({ params }: { params: Promise<{ id: string
         <Link href="/dogs" style={{ color: '#6b46c1', textDecoration: 'none', fontWeight: '600', display: 'inline-block', marginBottom: '24px' }}>← Назад к списку</Link>
 
         {/* Карточка собаки */}
-        <div style={{ backgroundColor: 'white', borderRadius: '24px', overflow: 'hidden', display: 'flex', flexWrap: 'wrap', boxShadow: '0 4px 6px rgba(0,0,0,0.05)', marginBottom: '24px' }}>
+        <div className="dog-card" style={{ backgroundColor: 'white', borderRadius: '24px', overflow: 'hidden', display: 'flex', flexWrap: 'wrap', boxShadow: '0 4px 6px rgba(0,0,0,0.05)', marginBottom: '24px' }}>
           
           <div style={{ width: '100%', maxWidth: '50%', padding: '20px', boxSizing: 'border-box', backgroundColor: '#fcfcfc' }}>
   <DogGallery photos={photos} dogName={dog.name} />
