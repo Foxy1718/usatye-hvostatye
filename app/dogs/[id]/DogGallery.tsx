@@ -28,7 +28,16 @@ export default function DogGallery({ photos, dogName }: { photos: string[], dogN
           <Image src={photos[index]} alt="фон" fill style={{ objectFit: 'cover', filter: 'blur(20px)', opacity: 0.6, transform: 'scale(1.1)' }} />
           
           <div style={{ position: 'relative', width: '100%', height: '100%', cursor: 'pointer' }} onClick={() => setIsOpen(true)}>
-            <Image src={photos[index]} alt={dogName} fill sizes="(max-width: 1000px) 100vw, 50vw" quality={100} style={{ objectFit: 'contain' }} priority />
+            <Image 
+  key={index} // <--- ДОБАВЬТЕ ЭТУ СТРОЧКУ
+  src={photos[index]} 
+  alt={dogName} 
+  fill 
+  sizes="(max-width: 1000px) 100vw, 50vw" 
+  quality={100} 
+  style={{ objectFit: 'contain' }} 
+  priority 
+/>
           </div>
 
           {photos.length > 1 && (
