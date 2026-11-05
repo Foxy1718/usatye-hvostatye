@@ -29,7 +29,7 @@ export default function DogGallery({ photos, dogName }: { photos: string[], dogN
           
           <div style={{ position: 'relative', width: '100%', height: '100%', cursor: 'pointer' }} onClick={() => setIsOpen(true)}>
             <Image 
-  key={index} // <--- ДОБАВЬТЕ ЭТУ СТРОЧКУ
+  key={index}
   src={photos[index]} 
   alt={dogName} 
   fill 
