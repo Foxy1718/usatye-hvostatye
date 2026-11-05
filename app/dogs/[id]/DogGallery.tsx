@@ -5,6 +5,15 @@ import Image from "next/image";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
+// Функция для добавления параметров сжатия ImageKit
+const getOptimizedUrl = (url: string) => {
+  if (url.includes('ik.imagekit.io')) {
+    // w-1200: ширина 1200px, c-at_max: не обрезать, q-80: качество 80%
+    return `${url}?tr=w-1200,c-at_max,q-80`;
+  }
+  return url;
+};
+
 export default function DogGallery({ photos, dogName }: { photos: string[], dogName: string }) {
   const [index, setIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +22,8 @@ export default function DogGallery({ photos, dogName }: { photos: string[], dogN
     return <div style={{ height: '500px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#edf2f7', borderRadius: '16px' }}>Нет фото</div>;
   }
 
-  const slides = photos.map((src) => ({ src }));
+  // Готовим слайды для полноэкранного просмотра (тоже сжимаем)
+  const slides = photos.map((src) => ({ src: getOptimizedUrl(src) }));
 
   const nextPhoto = () => setIndex((prev) => (prev + 1) % photos.length);
   const prevPhoto = () => setIndex((prev) => (prev - 1 + photos.length) % photos.length);
@@ -26,7 +36,7 @@ export default function DogGallery({ photos, dogName }: { photos: string[], dogN
         <div style={{ position: 'relative', width: '100%', height: '550px', borderRadius: '16px', overflow: 'hidden', backgroundColor: '#edf2f7', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           
           <Image 
-            src={photos[index]} 
+            src={getOptimizedUrl(photos[index])} 
             alt="фон" 
             fill 
             style={{ objectFit: 'cover', filter: 'blur(20px)', opacity: 0.6, transform: 'scale(1.1)' }} 
@@ -36,7 +46,7 @@ export default function DogGallery({ photos, dogName }: { photos: string[], dogN
           <div style={{ position: 'relative', width: '100%', height: '100%', cursor: 'pointer' }} onClick={() => setIsOpen(true)}>
             <Image 
               key={index}
-              src={photos[index]} 
+              src={getOptimizedUrl(photos[index])} 
               alt={dogName} 
               fill 
               sizes="(max-width: 1000px) 100vw, 50vw" 
@@ -65,7 +75,7 @@ export default function DogGallery({ photos, dogName }: { photos: string[], dogN
             {photos.map((photo, i) => (
               <div key={i} onClick={() => setIndex(i)} style={{ position: 'relative', width: '80px', height: '80px', flexShrink: 0, borderRadius: '8px', overflow: 'hidden', cursor: 'pointer', border: index === i ? '3px solid #6b46c1' : '3px solid transparent', opacity: index === i ? 1 : 0.6, transition: 'all 0.2s' }}>
                 <Image 
-                  src={photo} 
+                  src={getOptimizedUrl(photo)} 
                   alt={`Миниатюра ${i + 1}`} 
                   fill 
                   style={{ objectFit: 'cover' }} 
