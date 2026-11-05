@@ -2,6 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { supabase } from "../supabase";
 
+const getOptimizedUrl = (url: string) => {
+  if (url.includes('ik.imagekit.io')) {
+    return `${url}?tr=w-600,c-at_max,q-80`; // Для каталога делаем поменьше (600px)
+  }
+  return url;
+};
+
 export const dynamic = 'force-dynamic';
 
 export default async function AllDogs() {
@@ -31,7 +38,7 @@ export default async function AllDogs() {
               <div style={{ position: 'relative', width: '100%', height: '300px', backgroundColor: '#edf2f7' }}>
                 {dog.image_url && (
   <Image 
-    src={dog.image_url.split(',')[0].trim()} 
+    src={getOptimizedUrl(dog.image_url.split(',')[0].trim())}
     alt={dog.name} 
     fill 
     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
