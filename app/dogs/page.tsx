@@ -4,7 +4,7 @@ import { supabase } from "../supabase";
 
 const getOptimizedUrl = (url: string) => {
   if (url.includes('ik.imagekit.io')) {
-    return `${url}?tr=w-600,c-at_max,q-80`; // Для каталога делаем поменьше (600px)
+    return ${url}?tr=w-600,c-at_max,q-80; // Для каталога делаем поменьше (600px)
   }
   return url;
 };
@@ -43,8 +43,7 @@ export default async function AllDogs() {
     fill 
     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
     quality={100} 
-    style={{ objectFit: 'cover' }}
-    unoptimized 
+    style={{ objectFit: 'cover' }} 
   />
 )}
               </div>
@@ -52,7 +51,7 @@ export default async function AllDogs() {
               <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                 <h3 style={{ fontSize: '24px', margin: '0 0 8px 0', fontWeight: '700' }}>{dog.name}</h3>
                 <p style={{ color: '#718096', margin: '0 0 24px 0', fontSize: '16px' }}>{dog.sex} • {dog.age}</p>
-                <Link href={`/dogs/${dog.id}`} style={{ marginTop: 'auto', display: 'block', textAlign: 'center', backgroundColor: '#f3e8ff', color: '#6b46c1', padding: '12px', borderRadius: '8px', textDecoration: 'none', fontWeight: '600', transition: 'background-color 0.2s' }}>
+                <Link href={/dogs/${dog.id}} style={{ marginTop: 'auto', display: 'block', textAlign: 'center', backgroundColor: '#f3e8ff', color: '#6b46c1', padding: '12px', borderRadius: '8px', textDecoration: 'none', fontWeight: '600', transition: 'background-color 0.2s' }}>
                   Узнать больше
                 </Link>
               </div>
