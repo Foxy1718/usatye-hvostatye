@@ -40,8 +40,33 @@ export default async function DogPage({ params }: { params: Promise<{ id: string
 
   const photos = dog.image_url ? dog.image_url.split(',').map((url: string) => url.trim()) : [];
 
+  // Структурированные данные (Schema.org) для красивой карточки в поиске
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": dog.name,
+    "image": photos[0],
+    "description": dog.description,
+    "brand": {
+      "@type": "Brand",
+      "name": "Приют «Печатники»"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "RUB",
+      "url": `https://usatye-hvostatye.layero.app/dogs/${dog.id}`
+    }
+  };
+  
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#f8f5fb', color: '#4a3b69', fontFamily: 'system-ui, -apple-system, sans-serif', padding: '40px 16px' }}>
+      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      
       <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
         
         <Link href="/dogs" style={{ color: '#6b46c1', textDecoration: 'none', fontWeight: '600', display: 'inline-block', marginBottom: '24px' }}>← Назад к списку</Link>
