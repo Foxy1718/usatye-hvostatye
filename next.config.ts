@@ -2,7 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    qualities: [75, 100], // <--- Разрешаем качество 100
+    loader: 'custom',
+    loaderFile: './supabase-image-loader.ts',
+    qualities: [75, 100],
     remotePatterns: [
       {
         protocol: 'https',
