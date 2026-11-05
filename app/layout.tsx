@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     type: "website",
   },
     verification: {
-    yandex: "2efc4e14667bdf02",
+    yandex: "4eed36ecb647b575",
     google: "AQ8KyDGAEiUJ23qq6mbIqMTInG6x03y6Y182m-L5n70"
   },
 };
