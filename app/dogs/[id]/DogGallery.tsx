@@ -25,19 +25,26 @@ export default function DogGallery({ photos, dogName }: { photos: string[], dogN
         {/* Главное фото с размытым фоном */}
         <div style={{ position: 'relative', width: '100%', height: '550px', borderRadius: '16px', overflow: 'hidden', backgroundColor: '#edf2f7', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           
-          <Image src={photos[index]} alt="фон" fill style={{ objectFit: 'cover', filter: 'blur(20px)', opacity: 0.6, transform: 'scale(1.1)' }} />
+          <Image 
+            src={photos[index]} 
+            alt="фон" 
+            fill 
+            style={{ objectFit: 'cover', filter: 'blur(20px)', opacity: 0.6, transform: 'scale(1.1)' }} 
+            unoptimized
+          />
           
           <div style={{ position: 'relative', width: '100%', height: '100%', cursor: 'pointer' }} onClick={() => setIsOpen(true)}>
             <Image 
-  key={index}
-  src={photos[index]} 
-  alt={dogName} 
-  fill 
-  sizes="(max-width: 1000px) 100vw, 50vw" 
-  quality={100} 
-  style={{ objectFit: 'contain' }} 
-  priority 
-/>
+              key={index}
+              src={photos[index]} 
+              alt={dogName} 
+              fill 
+              sizes="(max-width: 1000px) 100vw, 50vw" 
+              quality={100} 
+              style={{ objectFit: 'contain' }} 
+              priority 
+              unoptimized
+            />
           </div>
 
           {photos.length > 1 && (
@@ -57,7 +64,13 @@ export default function DogGallery({ photos, dogName }: { photos: string[], dogN
           <div style={{ display: 'flex', gap: '10px', marginTop: '16px', overflowX: 'auto', paddingBottom: '10px' }}>
             {photos.map((photo, i) => (
               <div key={i} onClick={() => setIndex(i)} style={{ position: 'relative', width: '80px', height: '80px', flexShrink: 0, borderRadius: '8px', overflow: 'hidden', cursor: 'pointer', border: index === i ? '3px solid #6b46c1' : '3px solid transparent', opacity: index === i ? 1 : 0.6, transition: 'all 0.2s' }}>
-                <Image src={photo} alt={`Миниатюра ${i + 1}`} fill style={{ objectFit: 'cover' }} />
+                <Image 
+                  src={photo} 
+                  alt={`Миниатюра ${i + 1}`} 
+                  fill 
+                  style={{ objectFit: 'cover' }} 
+                  unoptimized
+                />
               </div>
             ))}
           </div>
