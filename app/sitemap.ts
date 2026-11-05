@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { supabase } from './supabase'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://usatye-hvostatye.vercel.app'
+  const baseUrl = 'https://usatye-hvostatye.layero.app'
 
   // Получаем список всех собак из базы данных
   const { data: dogs } = await supabase.from('dogs').select('id, created_at')

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Усатые-хвостатые | Приют «Печатники»",
     description: "Собаки, которые ищут дом. Ждут вас!",
-    url: "https://usatye-hvostatye.vercel.app",
+    url: "https://usatye-hvostatye.layero.app",
     siteName: "Усатые-хвостатые",
     images: [
       {
